@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Backend API Server</title>
+    <link rel="stylesheet" href="/static/dev/css/bootstrap.min.css">
+  </head>
+  <body>
+    <div class="container">
+
+      <h1>API SAMPLE DEMO</h1>
+
+      <div class="card">
+        <div class="card-body">
+          <form>
+            <div class="form-group">
+              <label for="input_email">아이디</label>
+              <input type="text" class="form-control" id="input_account" value="93immm">
+            </div>
+            <div class="form-group">
+              <label for="input_password">비밀번호</label>
+              <input type="password" class="form-control" id="input_password" value="blarblar">
+            </div>
+          </form>
+          <button type="button" class="btn btn-secondary" onclick="signin()">로그인</button>
+        </div>
+      </div>
+
+    </div>
+  </body>
+  <script src="/static/dev/js/jquery.min.js"></script>
+  <script src="/static/dev/js/bootstrap.min.js"></script>
+  <script>
+    function signin() {
+      var input_account = $('#input_account').val();
+      var input_password = $('#input_password').val();
+      $.post( "/api/v1/user/signin", { 
+        account: input_account, 
+        password: input_password
+      }).done(function( data ) {
+        console.log('data = ', data);
+      });
+    }
+  </script>
+</html>
